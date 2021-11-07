@@ -31,12 +31,13 @@ public class Program {
 		
 		CarRental car = new CarRental(start, finish, new Vehicle(carModel));
 		
-		System.out.print("Enter price per hour: ");
-		Double pricePerHour = sc.nextDouble();
-		System.out.print("Enter price per day: ");
-		Double pricePerDay = sc.nextDouble();
+		/* Code in case custom prices per hour and day need to be changed
+		 * System.out.print("Enter price per hour: "); Double pricePerHour =
+		 * sc.nextDouble(); System.out.print("Enter price per day: "); Double
+		 * pricePerDay = sc.nextDouble();
+		 */
 		
-		RentalService rs = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
+		RentalService rs = new RentalService(10.0, 130.0, new BrazilTaxService());
 		
 		rs.processInvoice(car);
 		
