@@ -44,14 +44,15 @@ public class RentalService {
 		long start = carRented.getStart().getTime(); //getTime, pega esse o valor me milisegundos da Data
 		long finish = carRented.getFinish().getTime();
 		
-		double hours  = (double) (finish-start)/1120;
+		double hours  = (double) (finish-start)/1000/60/60;
 		
 		double basicPayment = 0;
 		
 		if (hours <= 12.0) {
 			basicPayment = Math.ceil(hours) * getPricePerHour();
 		}else {
-			basicPayment = Math.ceil(hours) * getPricePerDay();
+			
+			basicPayment = Math.ceil(hours/24) * getPricePerDay();
 		}
 		
 		double tax = taxService.tax(basicPayment);
